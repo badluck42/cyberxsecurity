@@ -30,12 +30,11 @@ Load balancing ensures that the application will be highly available, in additio
 - A jumpbox is a server that serves as a gateway into the remote network.
 - A loadbalancer is to serve as a point of access to service multiple machines
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the log files and system resources.
 - Filebeat watches for system logs
 - Metricbeat is used for gathering metrics and system usage
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function   | IP Address | Operating System |
 |----------|------------|------------|------------------|
@@ -68,12 +67,14 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+- It reduces configuration errors and full automation for selected servers
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Install docker: install docker to remote server
+- Install Python3_pip: allows additional docker modules to be installed easier
+- Docker Module: Install necessary modules
+- Increase Memory: ELK Docker image requires more memory to allow the server to launch
+- Download and launch ELK: Downloads ELK container and initializes it
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -81,25 +82,28 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- 10.1.0.5
+- 10.1.0.6
+- 10.1.0.8
+- 10.4.0.4
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- Web 1
+- Web 2
+- Web 3
+- ELKVM
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeats collects system events such as logins and commands and see what command is being used. Metricbeats collects information such as cpu usage and memory, it is useful to see what is taking up the systems resources
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the install-elk.yml file to /etc/ansible/install-elk.yml
+- Update the hots file to include the attribute and the destination IP of the ELK server
+- Run the playbook, and navigate to /etc/ansible/install-elk.yml to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 - _Which URL do you navigate to in order to check that the ELK server is running?
-
+http://[elk_server_ip]:5601/app/kibana/
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
