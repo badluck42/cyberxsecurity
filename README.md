@@ -112,9 +112,9 @@ _As a **Bonus**, provide the specific commands the user will need to run to down
 - Log on to the jumpbox and run the curl commands to get the playbook to install elk
 
 - Edit the hosts file in etc/ansible and update the ip addresses(make sure you are connected to the container)
-![alt text](Diagrams/elk-hosts.jpg)
+![alt text](Diagrams/elk-hosts.png)
 
 - Run the Playbook : ansible-playbook /etc/ansible/roles/elk_install.yml
 
 - Check that elk is installed by visiting to http://[elk_server_ip]:5601/app/kibana/
-![alt text](Diagrams/elk-installed.jpg)
+![alt text](Diagrams/elk-installed.png)
