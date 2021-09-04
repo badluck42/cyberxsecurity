@@ -106,4 +106,15 @@ SSH into the control node and follow the steps below:
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
 http://[elk_server_ip]:5601/app/kibana/
+
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
+- Log on to the jumpbox and run the curl commands to get the playbook to install elk
+
+- Edit the hosts file in etc/ansible and update the ip addresses(make sure you are connected to the container)
+![alt text](Diagrams/elk-hosts.jpg)
+
+- Run the Playbook : ansible-playbook /etc/ansible/roles/elk_install.yml
+
+- Check that elk is installed by visiting to http://[elk_server_ip]:5601/app/kibana/
+![alt text](Diagrams/elk-installed.jpg)
